@@ -21,52 +21,43 @@ module.exports.showList = async (req, res) => {
     req.flash("error", "Listing you requested for doesn't exist!");
     res.redirect("/listings");
   }
-  // --- Geocoding Logic ---
+
   let coordinates = null;
   if (list.location && list.country) {
     const address = `${list.location}, ${list.country}`;
     try {
+      console.log(`Attempting to geocode: ${address}`);
       const response = await axios.get(
         "https://nominatim.openstreetmap.org/search",
         {
           params: {
             q: address,
             format: "json",
-            limit: 1, // Only need the top result
+            limit: 1,
           },
           headers: {
-            "User-Agent": "WanderlustApp/1.0 (g.w.yn.ethrepal.es.ya@gmail.com)", // IMPORTANT: Replace with your app name and email
+            "User-Agent": "WanderlustApp/1.0 (your.email@example.com)", // Replace with your email
           },
+          timeout: 10000, // 10 second timeout
         }
       );
-
-      // Check if response.data is not empty and contains valid lat/lon
-      if (
-        response.data &&
-        response.data.length > 0 &&
-        response.data[0].lat &&
-        response.data[0].lon
-      ) {
-        coordinates = {
-          latitude: parseFloat(response.data[0].lat),
-          longitude: parseFloat(response.data[0].lon),
-        };
-        console.log(`Geocoded ${address} to:`, coordinates); // Log successful geocoding
+      if (response.data && response.data.length > 0) {
+        const result = response.data[0];
+        if (result.lat && result.lon) {
+          coordinates = {
+            latitude: parseFloat(result.lat),
+            longitude: parseFloat(result.lon),
+          };
+          console.log(`Successfully geocoded ${address}:`, coordinates);
+        }
       } else {
-        console.warn(`Nominatim did not find coordinates for: ${address}`);
-        console.log("Nominatim response data:", response.data); // Log response data even if empty
+        console.warn(`No geocoding results found for: ${address}`);
       }
     } catch (error) {
-      req.flash(
-        "error",
-        `Error geocoding location for ${address}: ${error.message}`
-      );
-      // coordinates remains null if there's an error or no results
+      console.error(`Geocoding error for ${address}:`, error.message);
     }
   }
-  // --- End Geocoding Logic ---
-
-  // Pass the coordinates along with the listing data to the EJS template
+  console.log("Final coordinates being passed to template:", coordinates);
   res.render("listings/show.ejs", { list, coordinates });
 };
 

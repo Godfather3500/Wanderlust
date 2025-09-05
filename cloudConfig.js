@@ -23,7 +23,7 @@ async function uploadToImgBB(localPath) {
           // Pass API key as a query parameter in the URL
           key: process.env.IMGBB_API_KEY,
         },
-        timeout: 25000, // Keep the increased timeout (25 seconds)
+        timeout: 60000, // Keep the increased timeout (25 seconds)
         maxBodyLength: Infinity,
         maxContentLength: Infinity,
       }

@@ -38,11 +38,21 @@
     <div class="col-6 offset-2 mt-2">
       <hr />
       <h4>Location on Map</h4>
-      <% if (coordinates !=="null" ) { %>
+      <% if (coordinates !== null ) { %>
       <div
         id="map"
-        style="height: 400px; width: 90%; border-radius: 3rem">
-      </div>
+        style="height: 400px; width: 90%; border-radius: 3rem"
+      ></div>
+      <script>
+        initializeMap(
+            <%= coordinates.latitude %>,
+            <%= coordinates.longitude %>,
+            '<%= list.title %>',
+            '<%= list.location %>',
+            '<%= list.country %>'
+        );
+      </script>
+
       <% } else { %>
       <p class="text-muted">Map not available for this location.</p>
       <% } %>
