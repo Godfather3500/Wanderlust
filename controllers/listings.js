@@ -4,7 +4,26 @@ const uploadToImgBB = require("../cloudConfig.js");
 
 // index page
 module.exports.index = async (req, res) => {
-  let allListings = await Listing.find({});
+  const { category, search } = req.query; // Get the category & search from the URL query
+
+  // Build the query object
+  let query = {};
+  if (category) query.category = category; // Add category filter if provided
+  if (search)
+    query.$or = [
+      { title: new RegExp(search, "i") },
+      { country: new RegExp(search, "i") },
+      { location: new RegExp(search, "i") },
+    ];
+
+  // Find listings based on the constructed query
+  const allListings = await Listing.find(query);
+
+   if (search && !allListings.length) {
+     req.flash("error", "No Search Results");
+     return res.redirect("/listings");
+   }
+
   res.render("listings/index.ejs", { allListings });
 };
 
@@ -98,8 +117,7 @@ module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   let list = await Listing.findByIdAndUpdate(
     id,
-    { ...req.body },
-    { runValidators: true }
+    { ...req.body }
   );
 
   if (typeof req.file != "undefined") {

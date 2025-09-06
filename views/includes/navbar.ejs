@@ -1,5 +1,5 @@
 <style>
-  .btn-search{
+  .btn-search {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
@@ -7,27 +7,55 @@
     font-size: 14px;
   }
 
-  .btn-search:hover{
+  .btn-search:hover {
     background-color: #fe424d;
     color: #fff;
   }
 
-  .btn-search i{
+  .btn-search i {
     display: inline;
     margin-right: 0.5rem;
   }
 
-  .search-inp{
+  .search-inp {
     border-radius: 25px;
     padding: 0.5rem 3rem;
     font-size: 14px;
   }
 
+  .navbar-collapse {
+    background-color: white;
+  }
+
+  @media (max-width: 575.98px) {
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+      background-color: white;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
 </style>
 
-<nav class="navbar navbar-expand-sm bg-body-light bg-white border-bottom sticky-top">
+<nav
+  class="navbar navbar-expand-sm bg-body-light bg-white border-bottom sticky-top"
+>
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-regular fa-compass"></i
+    ></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -40,22 +68,27 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav" >
+      <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
       <div class="navbar-nav ms-auto">
-          <form class="d-flex " role="search">
-      <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations"/>
-      <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-    </form>
+        <form action="/listings" method="get" class="d-flex" role="search">
+          <input
+            class="form-control me-2 search-inp"
+            type="search"
+            placeholder="Search destinations"
+          />
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
       </div>
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
         <% if(!currUser) { %>
         <a class="nav-link" href="/signup"><b>Sign Up</b></a>
         <a class="nav-link" href="/login"><b>Login</b></a>
-        <% } %>
-        <% if(currUser) { %>
+        <% } %> <% if(currUser) { %>
         <a class="nav-link" href="/logout"><b>Log Out</b></a>
         <% } %>
       </div>

@@ -119,3 +119,51 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
+ #filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter {
+    text-align: center;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    opacity: 0.6;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 14px;
+    margin: auto;
+    padding: 1rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .tax-info {
+    display: none;
+  }
+
+
+  @media (max-width: 900px) {
+    .hide-on-small-screen {
+      display: none;
+    }
+  }
+
+  #filters a {
+    text-decoration: none;
+    color: #222222;
+}

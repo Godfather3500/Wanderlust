@@ -17,7 +17,7 @@ main()
 const initData = async () => {
   let new_data = data.data.map((obj) => ({
     ...obj,
-    owner: "68b993b08be7f9f83fda24c9",
+    owner: "68bac55e0114eaa03ad8934d",
   }));
   await listing.insertMany(new_data);
   console.log("Data saved.");

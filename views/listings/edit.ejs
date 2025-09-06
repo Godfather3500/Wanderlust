@@ -92,8 +92,22 @@
           />
           <div class="invalid-feedback">Location should be valid</div>
         </div>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected><%= list.category %></option>
+            <option value="Mountains">Mountains</option>
+            <option value="Arctic">Arctic</option>
+            <option value="City">City</option>
+            <option value="Castle">Castle</option>
+            <option value="Pool">Pool</option>
+            <option value="Camping">Camping</option>
+            <option value="Farm">Farm</option>
+            <option value="Beach">Beach</option>
+          </select>
+        </div>
         <button class="btn btn-dark edit-btn mb-3 mt-3">Edit</button>
       </form>
     </div>
   </div>
+  <%= list %>
 </body>
