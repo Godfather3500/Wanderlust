@@ -64,10 +64,10 @@ module.exports.showList = async (req, res) => {
         response.data.results.length > 0
       ) {
         const result = response.data.results[0];
-        if (result.position.lat && result.position.lng) {
+        if (result.position.lat && result.position.lon) {
           coordinates = {
             latitude: parseFloat(result.position.lat),
-            longitude: parseFloat(result.position.lng),
+            longitude: parseFloat(result.position.lon),
           };
           console.log(`Successfully geocoded ${address}:`, coordinates);
         }

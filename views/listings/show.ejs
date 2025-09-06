@@ -44,16 +44,6 @@
         id="map"
         style="height: 400px; width: 90%; border-radius: 3rem"
       ></div>
-      <script>
-        initializeMap(
-            <%= coordinates.latitude %>,
-            <%= coordinates.longitude %>,
-            '<%= list.title %>',
-            '<%= list.location %>',
-            '<%= list.country %>'
-        );
-      </script>
-
       <% } else { %>
       <p class="text-muted">Map not available for this location.</p>
       <% } %>

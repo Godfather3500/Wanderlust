@@ -45,5 +45,16 @@
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.41.0/services/services-web.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/map.js"></script>
+     <% if (typeof coordinates !== 'undefined' && coordinates !== null) { %>
+      <script>
+        initializeMap(
+          <%= coordinates.latitude %>,
+          <%= coordinates.longitude %>,
+          '<%= list.title %>',
+          '<%= list.location %>',
+          '<%= list.country %>'
+        );
+      </script>
+    <% } %>
   </body>
 </html>
