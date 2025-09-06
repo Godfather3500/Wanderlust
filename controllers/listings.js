@@ -19,10 +19,10 @@ module.exports.index = async (req, res) => {
   // Find listings based on the constructed query
   const allListings = await Listing.find(query);
 
-   if (search && !allListings.length) {
-     req.flash("error", "No Search Results");
-     return res.redirect("/listings");
-   }
+  if (search && !allListings.length) {
+    req.flash("error", "No Search Results");
+    return res.redirect("/listings");
+  }
 
   res.render("listings/index.ejs", { allListings });
 };
@@ -47,25 +47,27 @@ module.exports.showList = async (req, res) => {
     try {
       console.log(`Attempting to geocode: ${address}`);
       const response = await axios.get(
-        "https://nominatim.openstreetmap.org/search",
+        `https://api.tomtom.com/search/2/geocode/${encodeURIComponent(
+          address
+        )}.json`,
         {
           params: {
-            q: address,
-            format: "json",
-            limit: 1,
+            key: "WWMep8BYS4WONN1nAGawNihp774MWAsv",
           },
-          headers: {
-            "User-Agent": "WanderlustApp/1.0 (your.email@example.com)", // Replace with your email
-          },
-          timeout: 10000, // 10 second timeout
+          timeout: 10000,
         }
       );
-      if (response.data && response.data.length > 0) {
-        const result = response.data[0];
-        if (result.lat && result.lon) {
+
+      if (
+        response.data &&
+        response.data.results &&
+        response.data.results.length > 0
+      ) {
+        const result = response.data.results[0];
+        if (result.position.lat && result.position.lng) {
           coordinates = {
-            latitude: parseFloat(result.lat),
-            longitude: parseFloat(result.lon),
+            latitude: parseFloat(result.position.lat),
+            longitude: parseFloat(result.position.lng),
           };
           console.log(`Successfully geocoded ${address}:`, coordinates);
         }
@@ -115,10 +117,7 @@ module.exports.renderEditForm = async (req, res) => {
 // update Listing
 module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
-  let list = await Listing.findByIdAndUpdate(
-    id,
-    { ...req.body }
-  );
+  let list = await Listing.findByIdAndUpdate(id, { ...req.body });
 
   if (typeof req.file != "undefined") {
     try {

@@ -1,26 +1,18 @@
-// public/js/map.js
 function initializeMap(latitude, longitude, title, location, country) {
-  // Wait for DOM to be fully loaded
   document.addEventListener("DOMContentLoaded", function () {
-    if (typeof L === "undefined") {
-      console.error("Leaflet library not loaded");
-      return;
-    }
+    var map = tt.map({
+      key: "WWMep8BYS4WONN1nAGawNihp774MWAsv",
+      container: "map",
+      center: [longitude, latitude],
+      zoom: 13,
+    });
 
-    // Initialize the map
-    const map = L.map("map").setView([latitude, longitude], 13);
+    var marker = new tt.Marker().setLngLat([longitude, latitude]).addTo(map);
 
-    // Add OpenStreetMap tiles
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
+    var popup = new tt.Popup({
+      offset: 30,
+    }).setHTML(`<b>${title}</b><br>${location}, ${country}`);
 
-    // Add marker for the listing location
-    L.marker([latitude, longitude])
-      .addTo(map)
-      .bindPopup(`<b>${title}</b><br>${location}, ${country}`)
-      .openPopup();
+    marker.setPopup(popup);
   });
 }
