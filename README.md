@@ -206,7 +206,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+- Harpreet Singh |  linkedin : https://www.linkedin.com/in/harpreet-singh-3500am/
 
 ## 🙏 Acknowledgments
 
@@ -215,13 +215,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - ImgBB for image hosting
 - Font Awesome for icons
 - MongoDB Atlas for database hosting
-
-## 📞 Support
-
-For support and questions:
-- Create an issue on GitHub
-- Email: your.email@example.com
-
----
-
-**Happy Traveling! 🌍**
