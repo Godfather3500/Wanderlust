@@ -84,7 +84,7 @@ app.listen(port, () => {
 
 // root link
 app.get("/", (req, res) => {
-  res.redirect("/listings);
+  res.redirect("/listings");
 });
 
 app.use((req, res, next) => {
