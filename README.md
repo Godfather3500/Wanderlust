@@ -1,6 +1,16 @@
-# Wanderlust 🏠✈️
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![EJS](https://img.shields.io/badge/EJS-B4CA65?style=for-the-badge&logo=ejs&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)
+
+# Wanderlust – Airbnb Clone with Maps & Reviews 🏠✈️
 
 A full-stack web application for listing and discovering vacation rentals, built with Node.js, Express, and MongoDB. Think of it as an Airbnb clone where users can browse, list, and review vacation properties.
+
+# Live Demo → https://wanderlust-hs3500.onrender.com  
 
 ## 🌟 Features
 
