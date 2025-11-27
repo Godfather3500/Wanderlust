@@ -10,7 +10,7 @@
 
 A full-stack web application for listing and discovering vacation rentals, built with Node.js, Express, and MongoDB. Think of it as an Airbnb clone where users can browse, list, and review vacation properties.
 
-# Live Demo → https://wanderlust-hs3500.onrender.com  
+# Live Demo → https://wanderlust-7dxz.onrender.com/listings  
 
 ## 🌟 Features
 
